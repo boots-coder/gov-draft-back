@@ -7,13 +7,13 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@TableName("users")
-public class User {
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Integer userId;
-    private String username;
-    private String password;
-    private String role;
-    private String permissions;
+@TableName("article_templates")
+public class ArticleTemplate {
+    @TableId(value = "template_id", type = IdType.AUTO)
+    private Integer templateId;
+    private String templateName;
+    private String content;
+    private String category;
     private LocalDateTime createdAt;
+    private Integer creatorId;
 }
