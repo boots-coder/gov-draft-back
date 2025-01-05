@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.coderboots.govdraftback.mapper.UserMapper">
+
+    <!-- 复杂的查询可以写在这里 -->
+    <select id="findUsersByRoleAndDepartment" resultType="org.coderboots.govdraftback.entity.User">
+        SELECT u.*
+        FROM users u
+        INNER JOIN user_departments ud ON u.user_id = ud.user_id
+        WHERE u.role = #{role} AND ud.dept_id = #{deptId}
+    </select>
+
+</mapper>
