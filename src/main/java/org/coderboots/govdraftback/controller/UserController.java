@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -46,11 +48,15 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result<User> login(@RequestParam String username, @RequestParam String password) {
+    public Result<User> login(@RequestBody Map<String, String> credentials) {
+        String username = credentials.get("username");
+        String password = credentials.get("password");
+        if (username == null || password == null) {
+            return Result.error("用户名和密码不能为空");
+        }
         User user = userService.login(username, password);
         return user != null ? Result.success(user) : Result.error("用户名或密码错误");
     }
-
 //    @PostMapping("/change-password")
 //    public Result<Boolean> changePassword(
 //            @RequestParam Integer userId,

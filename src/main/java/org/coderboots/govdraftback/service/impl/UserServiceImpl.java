@@ -18,7 +18,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
         // 查询用户
         User user = this.getOne(wrapper);
-
         // 验证用户和密码
         if (user != null && password.equals(user.getPassword())) {
             // 密码正确，清空密码后返回用户信息

@@ -17,7 +17,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         // 设置提交时间
         article.setSubmittedAt(LocalDateTime.now());
         // 设置初始状态为待审核
-        article.setStatus("PENDING");
+        article.setStatus("待审核");
         return this.save(article);
     }
 
